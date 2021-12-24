@@ -22,9 +22,20 @@ if [[ "$VNC_PASSWORD" != "" ]]; then
   export X11VNC_AUTH="-passwd $VNC_PASSWORD"
 fi
 
-# make sure .config dir exists
-mkdir -p /home/chrome/.config
-chown chrome:chrome /home/chrome/.config
+# init
+if ! id chrome &>/dev/null; then
+  echo "Creating user..."
+  useradd -m -G chrome-remote-desktop,pulse-access chrome
+  usermod -s /bin/bash chrome
+fi
+if [[ ! -f /home/chrome/.initialized ]]; then
+  mkdir -p /home/chrome/.config/chrome-remote-desktop
+  mkdir -p /home/chrome/.fluxbox
+  cp /usr/local/etc/fluxbox/* /home/chrome/.fluxbox/
+  cp -r /usr/local/etc/tint2 /home/chrome/.config/
+  chown -R chrome:chrome /home/chrome/.config /home/chrome/.fluxbox
+  touch /home/chrome/.initialized
+fi
 
 # set sizes for both VNC screen & Chrome window
 : ${VNC_SCREEN_SIZE:='1024x768'}

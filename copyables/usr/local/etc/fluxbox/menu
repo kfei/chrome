@@ -1,0 +1,6 @@
+[begin] (fluxbox)
+[submenu] (FF Profiles) {}
+[exec] (Firefox (default\)) {firefox -P default} <>
+[end]
+[include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]

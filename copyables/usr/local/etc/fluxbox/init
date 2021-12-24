@@ -1,0 +1,7 @@
+session.screen0.toolbar.visible:  false
+session.screen0.fullMaximization: false
+session.screen0.maxDisableResize: false
+session.screen0.maxDisableMove:   false
+session.screen0.defaultDeco:      NORMAL
+session.styleFile:                /usr/share/fluxbox/styles/Bity_fluxbox
+session.screen0.workspaceNames:   default,second,third,fourth
